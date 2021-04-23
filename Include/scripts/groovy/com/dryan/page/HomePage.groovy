@@ -7,12 +7,15 @@ import org.openqa.selenium.support.PageFactory
 import com.kms.katalon.core.webui.driver.DriverFactory
 
 
-class HomePage extends BasePage {
+class HomePage {
 
+	WebDriver driver
+	
 	@FindBy(css = "#doubleClickBtn")
 	private WebElement responseCode
 
 	public HomePage() {
+		driver = DriverFactory.getWebDriver()
 		PageFactory.initElements(driver, this)
 	}
 

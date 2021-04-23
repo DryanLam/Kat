@@ -5,9 +5,12 @@ import org.openqa.selenium.support.PageFactory
 
 import com.kms.katalon.core.webui.driver.DriverFactory
 
-class CartPage extends BasePage {
+class CartPage {
 
+	WebDriver driver
+	
 	public CartPage() {
+		driver = DriverFactory.getWebDriver()
 		PageFactory.initElements(driver, this)
 	}
 

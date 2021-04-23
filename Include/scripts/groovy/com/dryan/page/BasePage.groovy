@@ -5,28 +5,21 @@ import org.openqa.selenium.WebDriver
 import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
-class BasePage  extends BaseAction	{
+class BasePage extends BaseAction {
 
-	WebDriver driver
+	public HomePage homePage
+	public CartPage cartPage
 
-	public HomePage homePage;
-	public CartPage cartPage;
-
-	private static BasePage instance;
-
-	static {
-		instance ?: new BasePage();
-	}
+	private static BasePage instance
 
 	public BasePage(){
-		WebUI.openBrowser("");
-		driver = DriverFactory.getWebDriver()
-
 		homePage = new HomePage()
 		cartPage = new CartPage()
 	}
-	
+
 	public static BasePage initialize() {
+		WebUI.openBrowser("")
+		instance = new BasePage()
 		return instance
 	}
 }
