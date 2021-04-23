@@ -1,8 +1,5 @@
 package com.dryan.page
 
-import org.openqa.selenium.WebDriver
-
-import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 class BasePage extends BaseAction {
@@ -21,5 +18,11 @@ class BasePage extends BaseAction {
 		WebUI.openBrowser("")
 		instance = new BasePage()
 		return instance
+	}
+	
+	public static void dispose() {
+		WebUI.closeBrowser()
+		instance = null
+		System.gc()
 	}
 }

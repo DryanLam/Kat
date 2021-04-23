@@ -3,6 +3,7 @@ package com.dryan.hook
 import cucumber.api.java.After
 import cucumber.api.java.Before
 
+import com.dryan.page.BasePage
 
 
 
@@ -16,6 +17,6 @@ public class Hooks {
 	
 	@After
 	def resetApp() {
-		println "After"
+		BasePage.dispose()
 	}
 }
