@@ -44,7 +44,7 @@ import cucumber.api.java.en.When
 
 
 
-class FirstSteps {
+class FirstSteps{
 	/**
 	 * The step definitions below match with Katalon sample Gherkin steps
 	 */

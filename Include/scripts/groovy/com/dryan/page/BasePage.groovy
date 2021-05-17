@@ -19,7 +19,7 @@ class BasePage extends BaseAction {
 		instance = new BasePage()
 		return instance
 	}
-	
+
 	public static void dispose() {
 		WebUI.closeBrowser()
 		instance = null

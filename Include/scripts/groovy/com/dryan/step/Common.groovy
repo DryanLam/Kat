@@ -45,9 +45,9 @@ import cucumber.api.java.en.When
 import com.dryan.page.BasePage
 
 class Common {
-	
+
 	BasePage page
-	
+
 	@Given("I navigate to home page")
 	def I_navigate_to_home_page() {
 		page = BasePage.initialize()
@@ -63,4 +63,6 @@ class Common {
 	def I_click_on_button() {
 		page.homePage.clickButton("Submit")
 	}
+
+	
 }
