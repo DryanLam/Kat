@@ -8,30 +8,43 @@ import cucumber.api.java.Before
 import dl.rest.com.ApiClient
 import dl.rest.com.Parser
 import dl.rest.com.WSResponse
-import internal.GlobalVariable
+import internal.GlobalVariable as GlobalVariable
 
 
 public class Hooks {
 
-	ApiClient client
-	WSResponse response
-	Parser parser
 
 	@Before
-	def installApp(Scenario sc) {
+	def setUp(Scenario sc) {
 		println "Before"
-		def apiUrl = GlobalVariable.API_URL
-
-		client = new ApiClient(apiUrl)
-		response = new WSResponse()
-
-		def tags = sc.getSourceTagNames().join(",")
-		client.setHeader(["testcase": tags])
-		//		log.info("Test WS");
+		if(GlobalVariable.IS_PROFILING) {
+			startProfilingTC(sc)
+		}
 	}
 
 	@After
-	def resetApp() {
+	def tearDown() {
+		if(GlobalVariable.IS_PROFILING) {
+			stopProfiling()
+		}
 		BasePage.dispose()
+	}
+	
+	private def startProfilingTC(Scenario sc) {
+		def client = new ApiClient(GlobalVariable.API_URL)
+		def response = new WSResponse()
+		def defaultHeader = new HashMap<String,Object>()
+		client.setHeader(defaultHeader)
+		def tags = sc.getSourceTagNames().join(",")
+		client.setHeader(["testcase": tags])
+		client.doGetRequest("/register")
+	}
+	
+	private def stopProfiling() {
+		def client = new ApiClient(GlobalVariable.API_URL)
+		def response = new WSResponse()
+		def defaultHeader = new HashMap<String,Object>()
+		client.setHeader(defaultHeader)
+		client.doGetRequest("/logout")
 	}
 }

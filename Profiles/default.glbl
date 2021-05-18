@@ -6,12 +6,12 @@
    <defaultProfile>true</defaultProfile>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'http://localhost:3000'</initValue>
+      <initValue>'http://localhost:7000/api'</initValue>
       <name>API_URL</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
       <initValue>false</initValue>
-      <name>PROFILING</name>
+      <name>IS_PROFILING</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

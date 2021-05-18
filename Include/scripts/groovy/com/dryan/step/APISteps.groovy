@@ -6,21 +6,35 @@ import com.dryan.hook.Hooks
 import cucumber.api.java.en.Given
 import cucumber.api.java.en.Then
 import cucumber.api.java.en.When
+import dl.rest.com.ApiClient
+import dl.rest.com.Parser
+import dl.rest.com.WSResponse
 
-class APISteps extends Hooks{
+
+import com.dryan.page.BasePage
+
+import cucumber.api.Scenario
+import cucumber.api.java.After
+import cucumber.api.java.Before
+import internal.GlobalVariable as GlobalVariable
+
+class APISteps{
 	
-	@Given(/^We use default header$/)
-	def we_use_default_header(){
-
-		def defaultHeader = new HashMap<String,Object>()
-		client.setHeader(defaultHeader)
+	ApiClient client
+	WSResponse response
+	Parser parser
+	
+	static String TC = "" 
+	
+	@Given(/^We initialize webservice$/)
+	def we_initialize_webservice() {
+		client = new ApiClient( GlobalVariable.API_URL)
+		response = new WSResponse()
+		parser = new Parser()
+		def headers = new HashMap<String,Object>()
+		client.setHeader(headers)
 	}
-
-	@Given(/^We use register header$/)
-	def we_use_register_header(){
-		client.getHeader()
-	}
-
+	
 	@When(/^We send a POST request to '(.+?)' endpoint with body:$/)
 	def we_send_a_POST_request_to_endpoint_with_body(String endPoint, String dataDody) {
 		def res = client.doPostRequest(endPoint, dataDody)
@@ -33,8 +47,8 @@ class APISteps extends Hooks{
 		response.setResponse(res)
 	}
 
-	@Then(/^We got the Response with status code '(.+?)'$/)
-	def we_got_the_Response_with_status_code(Integer httpCode) {
+	@Then("We got the Response with status code '{int}'")
+	def we_got_the_Response_with_status_code(int httpCode) {
 		def statusCode = response.getStatusCode()
 		Assert.assertEquals(httpCode, statusCode)
 	}
@@ -43,16 +57,10 @@ class APISteps extends Hooks{
 	def we_got_the_Response_with_body(String jsonBody) {
 		def expected = parser.parseToJson(jsonBody);
 		def actual = parser.parseToJson(response.getBodyAsString());
-		Assert.assertEquals(expected.toString(), actual.toString())
+		Assert.assertEquals(expected, actual)
 	}
-
-	@When(/^We register web service$/)
-	def we_register_webserice(){
-		client.doGetRequest("/register")
-	}
-
-	@When(/^We logout web service$/)
-	def we_logout_webserice(){
-		client.doGetRequest("/logout")
-	}
+	
+//	@Then("her/his stats include {int} {correct} attempt(s)")
+//	public void statsIncludeAttempts(int attemptNumber, boolean correct) {
+//	}
 }

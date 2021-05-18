@@ -1,13 +1,17 @@
-@tag
-Feature: Title of your feature
-  I want to use this template for my feature file
+@API @Agent
+Feature: Check
 
-  @tag1
-  Scenario Outline: Title of your scenario outline
-    Given I want to write a step with <name>
-    When I check for the <value> in step
-    Then I verify the <status> in step
+  Background: User uses default header to access application
+    Given We initialize webservice
 
-    Examples: 
-      | name  | value | status  |
-      | name1 |     5 | success |
+  @ID-2001
+  Scenario: Test user api
+    When We send a GET request to '/user' endpoint
+    Then We got the Response with status code '200'
+    And We got the Response with body:
+    """
+    {
+      "name": "Dryan Lam",
+      "BU": "Turing"
+    }
+    """

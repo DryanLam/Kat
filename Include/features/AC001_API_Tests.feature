@@ -1,9 +1,8 @@
 @API @Agent
-Feature: Demo automated test for FlashHatch
+Feature: Demo automated test for KataConnect
 
   Background: User uses default header to access application
-    Given We use register header
-    And We register web service
+    Given We initialize webservice
 
   @ID-1001
   Scenario: Test book api
@@ -16,7 +15,6 @@ Feature: Demo automated test for FlashHatch
       "cost": "2000"
     }
     """
-    And We logout web service
 
   @ID-1002
   Scenario: Test user api
@@ -29,10 +27,9 @@ Feature: Demo automated test for FlashHatch
       "BU": "Turing"
     }
     """
-    And We logout web service
 
   @ID-1003
-  Scenario: Test user api
+  Scenario: Test bike api
     When We send a GET request to '/bike' endpoint
     Then We got the Response with status code '200'
     And We got the Response with body:
@@ -42,10 +39,9 @@ Feature: Demo automated test for FlashHatch
       "type": "Road"
     }
     """
-    And We logout web service
 
   @ID-1004
-  Scenario: Test user api
+  Scenario: Test car api
     When We send a GET request to '/car' endpoint
     Then We got the Response with status code '200'
     And We got the Response with body:
@@ -55,4 +51,3 @@ Feature: Demo automated test for FlashHatch
       "type": "Off Road"
     }
     """
-    And We logout web service

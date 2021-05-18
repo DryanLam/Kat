@@ -13,7 +13,7 @@ public class WSResponse {
 		return response
 	}
 
-	def getStatusCode() {
+	int getStatusCode() {
 		return response.getStatusCode()
 	}
 
