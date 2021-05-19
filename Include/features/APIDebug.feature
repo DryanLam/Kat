@@ -1,10 +1,10 @@
-@API @Agent
+@API
 Feature: Check
 
   Background: User uses default header to access application
     Given We initialize webservice
 
-  @ID-2001
+  @ID-Debug
   Scenario: Test user api
     When We send a GET request to '/user' endpoint
     Then We got the Response with status code '200'

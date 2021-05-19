@@ -1,4 +1,4 @@
-@API @Agent
+@API @Regression
 Feature: Demo automated test for KataConnect
 
   Background: User uses default header to access application
