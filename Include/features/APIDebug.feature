@@ -1,4 +1,4 @@
-@API
+@API @Regression
 Feature: Check
 
   Background: User uses default header to access application
