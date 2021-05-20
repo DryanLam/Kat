@@ -1,12 +1,12 @@
 import dl.rest.com.ApiClient
-import static io.restassured.RestAssured.given
+import dl.rest.com.WSResponse
 
 def url = "https://demoqa.com/utilities/weather/city/Hyderabad"
 
-def req = new ApiClient("https://demoqa.com")
-def res = req.doGetRequest("/utilities/weather/city/Hyderabad")
-
-
+def client = new ApiClient("https://demoqa.com")
+def resp = new WSResponse()
+resp.setResponse(client.doGetRequest("/utilities/weather/city/Hyderabad"))
+def body = resp.getBody()
 
 
 //def a = given()

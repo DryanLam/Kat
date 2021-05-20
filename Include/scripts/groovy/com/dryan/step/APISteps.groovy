@@ -19,13 +19,13 @@ import cucumber.api.java.Before
 import internal.GlobalVariable as GlobalVariable
 
 class APISteps{
-	
+
 	ApiClient client
 	WSResponse response
 	Parser parser
-	
-	static String TC = "" 
-	
+
+	static String TC = ""
+
 	@Given(/^We initialize webservice$/)
 	def we_initialize_webservice() {
 		client = new ApiClient( GlobalVariable.API_URL)
@@ -34,7 +34,7 @@ class APISteps{
 		def headers = new HashMap<String,Object>()
 		client.setHeader(headers)
 	}
-	
+
 	@When(/^We send a POST request to '(.+?)' endpoint with body:$/)
 	def we_send_a_POST_request_to_endpoint_with_body(String endPoint, String dataDody) {
 		def res = client.doPostRequest(endPoint, dataDody)
@@ -59,8 +59,8 @@ class APISteps{
 		def actual = parser.parseToJson(response.getBodyAsString());
 		Assert.assertEquals(expected, actual)
 	}
-	
-//	@Then("her/his stats include {int} {correct} attempt(s)")
-//	public void statsIncludeAttempts(int attemptNumber, boolean correct) {
-//	}
+
+	//	@Then("her/his stats include {int} {correct} attempt(s)")
+	//	public void statsIncludeAttempts(int attemptNumber, boolean correct) {
+	//	}
 }
