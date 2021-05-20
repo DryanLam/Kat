@@ -4,7 +4,7 @@ import internal.GlobalVariable as GlobalVariable
 def TAGS_EXECUTION = ""
 
 if(GlobalVariable.IS_PROFILING == true) {
-	TAGS_EXECUTION = "Regession"
+	TAGS_EXECUTION = "@Regression"
 } else {
 	TAGS_EXECUTION = GlobalVariable.TAGS
 }

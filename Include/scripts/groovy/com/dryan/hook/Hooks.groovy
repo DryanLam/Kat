@@ -24,12 +24,13 @@ public class Hooks {
 
 	@After
 	def tearDown() {
+		println "After"
 		if(GlobalVariable.IS_PROFILING) {
 			stopProfiling()
 		}
 		BasePage.dispose()
 	}
-	
+
 	private def startProfilingTC(Scenario sc) {
 		def client = new ApiClient(GlobalVariable.API_URL)
 		def response = new WSResponse()
@@ -39,7 +40,7 @@ public class Hooks {
 		client.setHeader(["testcase": tags])
 		client.doGetRequest("/register")
 	}
-	
+
 	private def stopProfiling() {
 		def client = new ApiClient(GlobalVariable.API_URL)
 		def response = new WSResponse()
