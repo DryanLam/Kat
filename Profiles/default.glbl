@@ -11,12 +11,12 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>false</initValue>
-      <name>IS_PROFILING</name>
+      <initValue>'@ID-Debug'</initValue>
+      <name>TAGS</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'@ID-Debug'</initValue>
-      <name>TAGS</name>
+      <initValue>'false'</initValue>
+      <name>IS_PROFILING</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>
