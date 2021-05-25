@@ -12,6 +12,6 @@ Feature: Demo automated test for KataConnect
     """
     {
       "name": "Dryan Lam",
-      "BU": "Turing"
+      "role": "Technical Leader"
     }
     """
